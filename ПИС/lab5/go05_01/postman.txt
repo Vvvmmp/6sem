@@ -1,0 +1,27 @@
+http://localhost:3000/Celebrities   POST
+{
+    "id": 1,
+    "fullName": "Keanu Reeves",
+    "nationality": "Canadian",
+    "reqPhotoPath": "/images/keanu.jpg"
+}
+{
+    "id": 2,
+    "fullName": "Test Name",
+    "nationality": "Test",
+    "reqPhotoPath": "/images/test.jpg"
+}
+
+
+http://localhost:3000/Celebrities/All
+
+http://localhost:3000/Celebrities/1
+
+http://localhost:3000/Celebrities/1
+{
+    "fullName": "Keanu Charles Reeves",
+    "nationality": "Canadian",
+    "reqPhotoPath": "/images/matrix/keanu_new.png"
+}
+
+http://localhost:3000/Celebrities/1

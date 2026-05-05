@@ -1,0 +1,39 @@
+//sum
+{
+    "jsonrpc": "2.0",
+    "method": "sum",
+    "params": [2, 5, 10],
+    "id": 1
+}
+
+//mul
+{
+    "jsonrpc": "2.0",
+    "method": "mul",
+    "params": [2, 3, 4],
+    "id": 2
+}
+
+//div
+{
+    "jsonrpc": "2.0",
+    "method": "div",
+    "params": [20, 5],
+    "id": 3
+}
+
+//proc
+{
+    "jsonrpc": "2.0",
+    "method": "proc",
+    "params": [50, 200],
+    "id": 4
+}
+
+//div by 0
+{
+    "jsonrpc": "2.0",
+    "method": "div",
+    "params": [10, 0],
+    "id": 5
+}

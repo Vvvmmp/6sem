@@ -1,0 +1,1 @@
+[{"domain": "www.saucedemo.com", "expiry": 1776159901, "httpOnly": false, "name": "session-username", "path": "/", "sameSite": "Lax", "secure": false, "value": "problem_user"}]

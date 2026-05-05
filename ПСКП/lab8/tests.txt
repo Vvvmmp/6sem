@@ -1,0 +1,22 @@
+
+http://localhost:3000/md/dir1
+
+http://localhost:3000/rd/dir1
+
+
+
+http://localhost:3000/up/test1.txt
+
+http://localhost:3000/down/test1.txt 
+
+
+
+http://localhost:3000/copy/test1.txt/test1_copy.txt
+
+http://localhost:3000/move/test1_copy.txt/test1_move.txt
+
+
+
+    http://localhost:3000/del/test1_move.txt
+
+http://localhost:3000/del/test1.txt

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Асимметричный шифр (Рюкзак)</title>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; }
+    .window-container { max-width: 900px; margin: auto; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+    .tab-header { display: flex; background: #e1e1e1; border-bottom: 1px solid #ccc; }
+    .tab-btn { flex: 1; padding: 15px; border: none; background: #e1e1e1; cursor: pointer; font-size: 15px; font-weight: bold; outline: none; transition: 0.3s; }
+    .tab-btn:hover { background: #d1d1d1; }
+    .tab-btn.active { background: #fff; border-bottom: 2px solid #007bff; color: #007bff; }
+    .tab-content { padding: 20px; display: none; }
+    .tab-content.active { display: block; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input[type="text"], textarea, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { background: #007bff; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 14px; margin-right: 10px; margin-bottom: 10px; }
+    button:hover { background: #0056b3; }
+    .metrics { margin-top: 15px; padding: 10px; background: #eef; border-left: 4px solid #007bff; }
+    textarea { font-family: monospace; }
+</style>
+</head>
+<body>
+
+<div class="window-container">
+    <div class="tab-header">
+        <button class="tab-btn active" onclick="openTab(event, 'keys')">Генерация ключей</button>
+        <button class="tab-btn" onclick="openTab(event, 'encrypt')">Зашифрование</button>
+        <button class="tab-btn" onclick="openTab(event, 'decrypt')">Расшифрование</button>
+    </div>
+
+    <div id="keys" class="tab-content active">
+        <div class="form-group">
+            <label>Режим кодировки (определяет длину ключа z):</label>
+            <select id="encodeMode">
+                <option value="6">Base64 (z = 6)</option>
+                <option value="8">ASCII (z = 8)</option>
+            </select>
+        </div>
+        <button onclick="generateKeys()">Сгенерировать ключи (до 100 бит)</button>
+        <div class="form-group">
+            <label>Закрытый ключ (Сверхвозрастающая последовательность d):</label>
+            <textarea id="privKeyOut" rows="4" readonly></textarea>
+        </div>
+        <div class="form-group">
+            <label>Параметры n и a:</label>
+            <textarea id="paramsOut" rows="2" readonly></textarea>
+        </div>
+        <div class="form-group">
+            <label>Открытый ключ (Нормальная последовательность e):</label>
+            <textarea id="pubKeyOut" rows="4" readonly></textarea>
+        </div>
+    </div>
+
+    <div id="encrypt" class="tab-content">
+        <div class="form-group">
+            <label>Открытый текст (ФИО):</label>
+            <textarea id="inputText" rows="3"></textarea>
+        </div>
+        <button onclick="encryptMessage()">Зашифровать</button>
+        <div class="form-group">
+            <label>Шифротекст (массив чисел):</label>
+            <textarea id="cipherTextOut" rows="6" readonly></textarea>
+        </div>
+        <div id="encMetrics" class="metrics" style="display: none;"></div>
+    </div>
+
+    <div id="decrypt" class="tab-content">
+        <div class="form-group">
+            <label>Шифротекст для расшифрования:</label>
+            <textarea id="cipherTextInput" rows="6"></textarea>
+        </div>
+        <button onclick="decryptMessage()">Расшифровать</button>
+        <div class="form-group">
+            <label>Расшифрованный текст:</label>
+            <textarea id="decryptedTextOut" rows="3" readonly></textarea>
+        </div>
+        <div id="decMetrics" class="metrics" style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+let state = {
+    z: 8,
+    privKey: [],
+    pubKey: [],
+    n: 0n,
+    a: 0n,
+    invA: 0n
+};
+
+const B64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+function openTab(evt, tabName) {
+    let tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
+    let tabBtns = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+
+function getRandomBigInt(bits) {
+    let hex = '1';
+    let chars = Math.floor(bits / 4);
+    for(let i = 0; i < chars; i++) {
+        hex += Math.floor(Math.random() * 16).toString(16);
+    }
+    return BigInt('0x' + hex);
+}
+
+function gcd(a, b) {
+    while (b !== 0n) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+function modInverse(a, m) {
+    let m0 = m, x0 = 0n, x1 = 1n;
+    if (m === 1n) return 0n;
+    while (a > 1n) {
+        let q = a / m;
+        let t = m;
+        m = a % m;
+        a = t;
+        t = x0;
+        x0 = x1 - q * x0;
+        x1 = t;
+    }
+    if (x1 < 0n) x1 += m0;
+    return x1;
+}
+
+function generateKeys() {
+    let z = parseInt(document.getElementById('encodeMode').value);
+    state.z = z;
+    
+    let privKey = [];
+    let sum = 0n;
+    
+    for (let i = 0; i < z - 1; i++) {
+        let val = sum + getRandomBigInt(95);
+        privKey.push(val);
+        sum += val;
+    }
+    
+    let dz = sum + getRandomBigInt(10);
+    let minDz = 1n << 99n;
+    if (dz < minDz) {
+        dz = minDz + getRandomBigInt(10);
+    }
+    privKey.push(dz);
+    sum += dz;
+    
+    let n = sum + getRandomBigInt(10);
+    let a = getRandomBigInt(98);
+    while (gcd(a, n) !== 1n) {
+        a += 1n;
+    }
+    
+    let pubKey = privKey.map(d => (d * a) % n);
+    
+    state.privKey = privKey;
+    state.pubKey = pubKey;
+    state.n = n;
+    state.a = a;
+    state.invA = modInverse(a, n);
+    
+    document.getElementById('privKeyOut').value = privKey.join(', ');
+    document.getElementById('paramsOut').value = `n = ${n}\na = ${a}`;
+    document.getElementById('pubKeyOut').value = pubKey.join(', ');
+}
+
+function encryptMessage() {
+    if (state.pubKey.length === 0) {
+        alert("Сначала сгенерируйте ключи!");
+        return;
+    }
+    let text = document.getElementById('inputText').value;
+    if (!text) return;
+    
+    let t0 = performance.now();
+    let cipherText = [];
+    
+    if (state.z === 8) {
+        let encoder = new TextEncoder();
+        let bytes = encoder.encode(text);
+        for (let i = 0; i < bytes.length; i++) {
+            let byte = bytes[i];
+            let C = 0n;
+            for (let j = 0; j < 8; j++) {
+                let bit = (byte >> (7 - j)) & 1;
+                if (bit === 1) C += state.pubKey[j];
+            }
+            cipherText.push(C);
+        }
+    } else if (state.z === 6) {
+        let b64 = btoa(unescape(encodeURIComponent(text)));
+        for (let i = 0; i < b64.length; i++) {
+            let val = B64_CHARS.indexOf(b64[i]);
+            if (val === -1) continue;
+            let C = 0n;
+            for (let j = 0; j < 6; j++) {
+                let bit = (val >> (5 - j)) & 1;
+                if (bit === 1) C += state.pubKey[j];
+            }
+            cipherText.push(C);
+        }
+    }
+    
+    let t1 = performance.now();
+    
+    let outStr = cipherText.map(c => c.toString()).join('\n');
+    document.getElementById('cipherTextOut').value = outStr;
+    document.getElementById('cipherTextInput').value = outStr;
+    
+    let m = document.getElementById('encMetrics');
+    m.style.display = 'block';
+    m.innerHTML = `Время зашифрования: ${(t1 - t0).toFixed(3)} мс`;
+}
+
+function decryptMessage() {
+    if (state.privKey.length === 0) return;
+    let inputStr = document.getElementById('cipherTextInput').value.trim();
+    if (!inputStr) return;
+    
+    let t0 = performance.now();
+    let cipherVals = inputStr.split('\n').map(s => BigInt(s.trim()));
+    let result = "";
+    
+    if (state.z === 8) {
+        let bytes = new Uint8Array(cipherVals.length);
+        for (let i = 0; i < cipherVals.length; i++) {
+            let C = cipherVals[i];
+            let S = (C * state.invA) % state.n;
+            let byte = 0;
+            for (let j = 7; j >= 0; j--) {
+                if (S >= state.privKey[j]) {
+                    byte |= (1 << (7 - j));
+                    S -= state.privKey[j];
+                }
+            }
+            bytes[i] = byte;
+        }
+        let decoder = new TextDecoder();
+        result = decoder.decode(bytes);
+    } else if (state.z === 6) {
+        let b64 = "";
+        for (let i = 0; i < cipherVals.length; i++) {
+            let C = cipherVals[i];
+            let S = (C * state.invA) % state.n;
+            let val = 0;
+            for (let j = 5; j >= 0; j--) {
+                if (S >= state.privKey[j]) {
+                    val |= (1 << (5 - j));
+                    S -= state.privKey[j];
+                }
+            }
+            b64 += B64_CHARS[val];
+        }
+        try {
+            result = decodeURIComponent(escape(atob(b64)));
+        } catch(e) {
+            result = "Ошибка декодирования Base64";
+        }
+    }
+    
+    let t1 = performance.now();
+    
+    document.getElementById('decryptedTextOut').value = result;
+    
+    let m = document.getElementById('decMetrics');
+    m.style.display = 'block';
+    m.innerHTML = `Время расшифрования: ${(t1 - t0).toFixed(3)} мс`;
+}
+</script>
+
+</body>
+</html>

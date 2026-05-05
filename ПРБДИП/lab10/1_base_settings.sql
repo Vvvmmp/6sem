@@ -1,0 +1,16 @@
+CREATE TABLESPACE lob_data_tbs
+    DATAFILE 'lob_data_01.dbf' 
+    SIZE 100M 
+    AUTOEXTEND ON NEXT 50M 
+    MAXSIZE UNLIMITED;
+
+
+CREATE OR REPLACE DIRECTORY ext_docs_dir AS '/opt/oracle/docs';
+
+CREATE USER lob_user IDENTIFIED BY "1515";
+
+GRANT CONNECT, RESOURCE, CREATE VIEW TO lob_user;
+
+GRANT READ, WRITE ON DIRECTORY ext_docs_dir TO lob_user;
+
+ALTER USER lob_user QUOTA UNLIMITED ON lob_data_tbs;

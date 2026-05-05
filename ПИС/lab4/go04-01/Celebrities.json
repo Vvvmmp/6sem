@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "fullName": "Noam",
+    "nationality": "Canadian",
+    "reqPhotoPath": "/Photo/Chomsky.jpg"
+  },
+  {
+    "id": 2,
+    "fullName": "Tim",
+    "nationality": "Canadian",
+    "reqPhotoPath": "/Photo/Berners-Lee.jpg"
+  },
+  {
+    "id": 3,
+    "fullName": "Edgar",
+    "nationality": "American",
+    "reqPhotoPath": "/Photo/Codd.jpg"
+  },
+  {
+    "id": 4,
+    "fullName": "Donald",
+    "nationality": "American",
+    "reqPhotoPath": "/Photo/Knuth.jpg"
+  },
+  {
+    "id": 6,
+    "fullName": "John123",
+    "nationality": "American121233",
+    "reqPhotoPath": "/Photo/Neumann.jpg123"
+  }
+]

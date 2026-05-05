@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>WebSocket client started</p>
+    <div id="output"></div>
+    <script>
+        const socket = new WebSocket("ws://localhost:3000/ws");
+        const out = document.getElementById("output");
+        socket.onopen = () => {
+            let i = 1;
+            const interval = setInterval(() => {
+                socket.send("browser message " + i);
+                i++;
+                if (i > 5) {
+                    clearInterval(interval);
+                    setTimeout(() => socket.close(), 1000);
+                }
+            }, 1000);
+        };
+        socket.onmessage = (e) => {
+            const p = document.createElement("p");
+            p.textContent = "server: " + e.data;
+            out.appendChild(p);
+        }
+    </script>
+</body>
+</html>

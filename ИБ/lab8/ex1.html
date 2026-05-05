@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Потоковый шифр (ЛКГ)</title>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; }
+    .window-container { max-width: 800px; margin: auto; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+    .tab-header { display: flex; background: #e1e1e1; border-bottom: 1px solid #ccc; }
+    .tab-btn { flex: 1; padding: 15px; border: none; background: #e1e1e1; cursor: pointer; font-size: 16px; font-weight: bold; outline: none; transition: 0.3s; }
+    .tab-btn:hover { background: #d1d1d1; }
+    .tab-btn.active { background: #fff; border-bottom: 2px solid #007bff; color: #007bff; }
+    .tab-content { padding: 20px; display: none; }
+    .tab-content.active { display: block; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input[type="number"], input[type="text"], textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { background: #007bff; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 14px; }
+    button:hover { background: #0056b3; }
+    .metrics { margin-top: 15px; padding: 10px; background: #eef; border-left: 4px solid #007bff; }
+</style>
+</head>
+<body>
+
+<div class="window-container">
+    <div class="tab-header">
+        <button class="tab-btn active" onclick="openTab(event, 'generator')">Окно 1: Генератор ПСП</button>
+        <button class="tab-btn" onclick="openTab(event, 'cipher')">Окно 2: Шифрование</button>
+    </div>
+
+    <div id="generator" class="tab-content active">
+        <div class="form-group">
+            <label>Параметр a:</label>
+            <input type="number" id="paramA" value="430">
+        </div>
+        <div class="form-group">
+            <label>Параметр c:</label>
+            <input type="number" id="paramC" value="2531">
+        </div>
+        <div class="form-group">
+            <label>Модуль n:</label>
+            <input type="number" id="paramN" value="11979">
+        </div>
+        <div class="form-group">
+            <label>Начальное значение (X0):</label>
+            <input type="number" id="paramX0" value="7">
+        </div>
+        <div class="form-group">
+            <label>Количество чисел для генерации (тест):</label>
+            <input type="number" id="genCount" value="20">
+        </div>
+        <button onclick="generateTestSequence()">Сгенерировать ПСП</button>
+        <div class="form-group" style="margin-top: 15px;">
+            <label>Результат генерации:</label>
+            <textarea id="genOutput" rows="4" readonly></textarea>
+        </div>
+    </div>
+
+    <div id="cipher" class="tab-content">
+        <div class="form-group">
+            <label>Исходный текст (или Base64 для расшифрования):</label>
+            <textarea id="inputText" rows="5"></textarea>
+        </div>
+        <button onclick="processData(false)">Зашифровать</button>
+        <button onclick="processData(true)">Расшифровать (из Base64)</button>
+        <div class="form-group" style="margin-top: 15px;">
+            <label>Результат:</label>
+            <textarea id="outputText" rows="5" readonly></textarea>
+        </div>
+        <div id="metrics" class="metrics" style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    let tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+    }
+    let tabBtns = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+    }
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
+
+class LCG {
+    constructor(a, c, n, x0) {
+        this.a = a;
+        this.c = c;
+        this.n = n;
+        this.x = x0;
+    }
+    next() {
+        this.x = (this.a * this.x + this.c) % this.n;
+        return this.x;
+    }
+    nextByte() {
+        return this.next() % 256;
+    }
+}
+
+function generateTestSequence() {
+    let a = parseInt(document.getElementById('paramA').value);
+    let c = parseInt(document.getElementById('paramC').value);
+    let n = parseInt(document.getElementById('paramN').value);
+    let x0 = parseInt(document.getElementById('paramX0').value);
+    let count = parseInt(document.getElementById('genCount').value);
+    
+    let lcg = new LCG(a, c, n, x0);
+    let res = [];
+    for (let i = 0; i < count; i++) {
+        res.push(lcg.next());
+    }
+    document.getElementById('genOutput').value = res.join(', ');
+}
+
+function processData(isDecrypt) {
+    let a = parseInt(document.getElementById('paramA').value);
+    let c = parseInt(document.getElementById('paramC').value);
+    let n = parseInt(document.getElementById('paramN').value);
+    let x0 = parseInt(document.getElementById('paramX0').value);
+    let input = document.getElementById('inputText').value;
+    
+    if (!input) return;
+
+    let t0 = performance.now();
+    let lcg = new LCG(a, c, n, x0);
+    let inputBytes;
+
+    if (isDecrypt) {
+        let binaryString = atob(input);
+        inputBytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            inputBytes[i] = binaryString.charCodeAt(i);
+        }
+    } else {
+        inputBytes = new TextEncoder().encode(input);
+    }
+
+    let outputBytes = new Uint8Array(inputBytes.length);
+    for (let i = 0; i < inputBytes.length; i++) {
+        let gammaByte = lcg.nextByte();
+        outputBytes[i] = inputBytes[i] ^ gammaByte;
+    }
+
+    let t1 = performance.now();
+    let resultText = "";
+
+    if (isDecrypt) {
+        resultText = new TextDecoder().decode(outputBytes);
+    } else {
+        let binaryString = "";
+        for (let i = 0; i < outputBytes.length; i++) {
+            binaryString += String.fromCharCode(outputBytes[i]);
+        }
+        resultText = btoa(binaryString);
+    }
+
+    document.getElementById('outputText').value = resultText;
+    
+    let metricsDiv = document.getElementById('metrics');
+    metricsDiv.style.display = "block";
+    metricsDiv.innerHTML = `Время выполнения: ${(t1 - t0).toFixed(3)} мс <br> Размер данных: ${inputBytes.length} байт`;
+}
+</script>
+
+</body>
+</html>

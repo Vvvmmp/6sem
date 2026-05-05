@@ -1,0 +1,51 @@
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\appsettings.Development.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\appsettings.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.staticwebassets.endpoints.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.exe
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.deps.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.runtimeconfig.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.dll
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.pdb
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.AssemblyInfoInputs.cache
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.AssemblyInfo.cs
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.csproj.CoreCompileInputs.cache
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.MvcApplicationPartsAssemblyInfo.cache
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\scopedcss\bundle\TDWA04_01.styles.css
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\staticwebassets.build.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\staticwebassets.development.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.dll
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\refint\TDWA04_01.dll
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.pdb
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.genruntimeconfig.cache
+D:\Users\ggsen\Рабочий стол\Лабораторные\6 сем\ТРВП\4\TDWA04_01\obj\Debug\net9.0\ref\TDWA04_01.dll
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\appsettings.Development.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\appsettings.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.staticwebassets.endpoints.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.exe
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.deps.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.runtimeconfig.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.dll
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\bin\Debug\net9.0\TDWA04_01.pdb
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.GeneratedMSBuildEditorConfig.editorconfig
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.AssemblyInfoInputs.cache
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.AssemblyInfo.cs
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.csproj.CoreCompileInputs.cache
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.MvcApplicationPartsAssemblyInfo.cache
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\scopedcss\bundle\TDWA04_01.styles.css
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets.build.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets.development.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets\msbuild.TDWA04_01.Microsoft.AspNetCore.StaticWebAssets.props
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets\msbuild.TDWA04_01.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets\msbuild.build.TDWA04_01.props
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TDWA04_01.props
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TDWA04_01.props
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\staticwebassets.pack.json
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.dll
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\refint\TDWA04_01.dll
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.pdb
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\TDWA04_01.genruntimeconfig.cache
+C:\labi\6sem\ТРВП\lab4\TDWA04_01\obj\Debug\net9.0\ref\TDWA04_01.dll

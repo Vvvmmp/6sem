@@ -1,0 +1,19 @@
+//get http://localhost:3000/user
+
+//post http://localhost:3000/user
+{
+    "name": "vladislav",
+    "email": "vladislav@example.com"
+}
+
+{
+    "name": "test",
+    "email": "test@example.com"
+}
+
+//put  http://localhost:3000/user?id=
+{
+    "name": "vladislav123"
+}
+
+//delete http://localhost:3000/user?id=

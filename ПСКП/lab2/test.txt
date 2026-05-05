@@ -1,0 +1,79 @@
+http://localhost:3000/api/faculties
+
+{
+  "faculty": "TEST",
+  "faculty_name": "TEST name"
+}
+
+{
+  "faculty": "TEST",
+  "faculty_name": "TEST new name"
+}
+
+http://localhost:3000/api/faculties/TEST
+
+
+http://localhost:3000/api/pulpits
+
+{
+  "pulpit": "TEST",
+  "pulpit_name": "TEST name",
+  "faculty": "ФИТ"
+}
+
+{
+  "pulpit": "TEST",
+  "pulpit_name": "TEST new name",
+  "faculty": "ФИТ"
+}
+
+http://localhost:3000/api/pulpits/TEST
+
+
+http://localhost:3000/api/subjects
+
+{
+  "subject": "TEST",
+  "subject_name": "TEST name",
+  "pulpit": "ИСиТ"
+}
+
+{
+  "subject": "TEST",
+  "subject_name": "TEST new name",
+  "pulpit": "ИСиТ"
+}
+
+http://localhost:3000/api/subjects/TEST
+
+http://localhost:3000/api/auditoriumstypes
+
+{
+  "auditorium_type": "TEST",
+  "auditorium_typename": "TEST name"
+}
+
+{
+  "auditorium_type": "TEST",
+  "auditorium_typename": "TEST new name"
+}
+
+http://localhost:3000/api/auditoriumstypes/TEST
+
+http://localhost:3000/api/auditoriums
+
+{
+  "auditorium": "1111-1",
+  "auditorium_name": "1111-1 name",
+  "auditorium_capacity": 60,
+  "auditorium_type": "ЛК"
+}
+
+{
+  "auditorium": "1111-1",
+  "auditorium_name": "1111-1 new name",
+  "auditorium_capacity": 60,
+  "auditorium_type": "ЛК"
+}
+
+http://localhost:3000/api/auditoriums/1111-1

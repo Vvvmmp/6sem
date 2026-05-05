@@ -1,0 +1,7 @@
+--winpty openssl genrsa -des3 -out CA.key 2048
+
+--winpty openssl req -x509 -new -key CA.key -days 700 -sha256 -out CA.crt
+
+--CA-LAB22-LVK
+
+--winpty openssl x509 -req -in LAB.csr -CA CA.crt -CAkey CA.key -CAcreateserial -out LAB.crt -days 365 -sha256 -extensions v3_req -extfile LAB.cfg

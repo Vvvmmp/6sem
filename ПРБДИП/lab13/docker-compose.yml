@@ -1,0 +1,16 @@
+name: MongoDB
+services:
+
+  db: 
+    image: bitnami/mongodb:latest 
+    container_name: mongo_db
+    environment:
+      MONGODB_ROOT_PASSWORD: ${DB_ROOT_PASS:-default_pass}
+      MONGODB_USERNAME: ${DB_USER}
+      MONGODB_PASSWORD: ${DB_PASS}
+      MONGODB_DATABASE: ${DB_NAME:-main_db}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongoDB_data:/bitnami/mongodb
+      

@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C45DDC00-DAEA-4E78-B277-A036E4929B60}|ApiGateway\\ApiGateway.csproj|c:\\labi\\6sem\\\u0442\u0440\u0432\u043F\\lab5\\lab5\\apigateway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C45DDC00-DAEA-4E78-B277-A036E4929B60}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C45DDC00-DAEA-4E78-B277-A036E4929B60}|ApiGateway\\ApiGateway.csproj|c:\\labi\\6sem\\\u0442\u0440\u0432\u043F\\lab5\\lab5\\apigateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45DDC00-DAEA-4E78-B277-A036E4929B60}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47D3ACB6-B11B-4928-899D-CBB5947DADAE}|TDWA05-01\\TDWA05-01.csproj|c:\\labi\\6sem\\\u0442\u0440\u0432\u043F\\lab5\\lab5\\tdwa05-01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47D3ACB6-B11B-4928-899D-CBB5947DADAE}|TDWA05-01\\TDWA05-01.csproj|solutionrelative:tdwa05-01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\ApiGateway\\Program.cs",
+              "RelativeDocumentMoniker": "ApiGateway\\Program.cs",
+              "ToolTip": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\ApiGateway\\Program.cs",
+              "RelativeToolTip": "ApiGateway\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAsAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T19:30:56.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ocelot.json",
+              "DocumentMoniker": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\ApiGateway\\ocelot.json",
+              "RelativeDocumentMoniker": "ApiGateway\\ocelot.json",
+              "ToolTip": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\ApiGateway\\ocelot.json",
+              "RelativeToolTip": "ApiGateway\\ocelot.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-17T19:30:12.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\TDWA05-01\\Program.cs",
+              "RelativeDocumentMoniker": "TDWA05-01\\Program.cs",
+              "ToolTip": "C:\\labi\\6sem\\\u0422\u0420\u0412\u041F\\lab5\\lab5\\TDWA05-01\\Program.cs",
+              "RelativeToolTip": "TDWA05-01\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T19:27:39.15Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
