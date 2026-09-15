@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\TDWA04_01.props" />
-</Project>

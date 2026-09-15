@@ -19,21 +19,21 @@
       ],
       "UpstreamPathTemplate": "/lb",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin"
-      }
-
+      
+      //"LoadBalancerOptions": {
+      //  "Type": "RoundRobin"
+      //}
 
       //"LoadBalancerOptions": {
       //  "Type": "CookieStickySessions",
       //  "Key": "sessionid",
-      //  "Expiry": 300000
+      //  "Expiry": 30000
       //}
 
 
-     // "LoadBalancerOptions": {
-     //   "Type": "CustomWLB"
-     // }
+      "LoadBalancerOptions": {
+        "Type": "CustomWLB"
+      }
     }
   ]
 }

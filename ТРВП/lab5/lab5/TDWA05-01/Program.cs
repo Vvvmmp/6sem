@@ -21,9 +21,13 @@ app.MapPost("/A", (HttpContext ctx) => HandleRequest(ctx, 2 * delay / 3));
 app.MapPut("/A", (HttpContext ctx) => HandleRequest(ctx, delay));
 app.MapDelete("/A", (HttpContext ctx) => HandleRequest(ctx, delay / 4));
 
-Console.WriteLine($"Сервер {nick} запущен на порту {port} с базовой задержкой {delay}ms");
+Console.WriteLine($"РЎРµСЂРІРµСЂ {nick} Р·Р°РїСѓС‰РµРЅ РЅР° РїРѕСЂС‚Сѓ {port} СЃ Р±Р°Р·РѕРІРѕР№ Р·Р°РґРµСЂР¶РєРѕР№ {delay}РјСЃ");
 app.Run();
 
+//TDWA05-01
 //dotnet run --Nick=Server1 --Port=5001 --Delay=300
 //dotnet run --Nick=Server2 --Port=5002 --Delay=300
 //dotnet run --Nick=Server3 --Port=5003 --Delay=300
+
+// ApiGateway
+//dotnet run

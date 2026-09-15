@@ -1,0 +1,25 @@
+### add selebrity
+POST http://localhost:8080/api/celebrities
+Content-Type: application/json
+
+{
+    "FullName": "Keanu Reeves",
+    "Nationality": "CA",
+    "ReqPhotoPath": "/images/keanu.jpg"
+}
+
+### get all
+GET http://localhost:8080/api/celebrities
+
+### update
+PUT http://localhost:8080/api/celebrities/6
+Content-Type: application/json
+
+{
+    "FullName": "Keanu Charles Reeves",
+    "Nationality": "CA",
+    "ReqPhotoPath": "/images/keanu.jpg"
+}
+
+### delete
+DELETE http://localhost:8080/api/celebrities/6

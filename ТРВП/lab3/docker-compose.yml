@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   nginx-server:
-    image: nginx:stable-alpine
-    container_name: lab2-nginx
+    image: nginx:latest
+    container_name: lab3-nginx
     ports:
       - "20000:20000"
       - "80:80"

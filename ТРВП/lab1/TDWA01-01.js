@@ -15,6 +15,7 @@ function calculate(op, x, y) {
 const server = http.createServer((req, res) => {
 
     if (req.url !== '/NGINX-test') {
+    //if (req.url !== '/NGINX-test' && req.url !== '/api/Save-JSON') {    
         res.writeHead(404);
         return res.end();
     }
